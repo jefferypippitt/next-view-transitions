@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { ViewTransitions } from "next-view-transitions";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -23,12 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <ViewTransitions>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} antialiased`}>
+      <body>
+        <main className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+          {children}
+        </main>
       </body>
     </html>
+    </ViewTransitions>
   );
 }
