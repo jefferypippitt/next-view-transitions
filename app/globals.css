@@ -263,3 +263,55 @@
     transform: translateX(0) rotateY(0) scale(1);
   }
 }
+
+/**
+ * Demo 5: Zoom Blur
+ * Path: /demofive
+ * Effect: Content zooms in/out with a blur effect
+ * Duration: 0.65s
+ */
+.demo-five-transition {
+  view-transition-name: zoom-blur;
+}
+
+::view-transition-old(zoom-blur),
+::view-transition-new(zoom-blur) {
+  animation: none;
+  transform-origin: center;
+}
+
+::view-transition-old(zoom-blur) {
+  animation: zoomBlurOut 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+::view-transition-new(zoom-blur) {
+  animation: zoomBlurIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes zoomBlurOut {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: scale(1.5);
+  }
+}
+
+@keyframes zoomBlurIn {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+/* Remove all helper classes */
