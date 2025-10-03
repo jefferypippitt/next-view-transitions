@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Navbar } from "@/components/navbar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -20,17 +22,28 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-      <html
-        lang="en"
-        suppressHydrationWarning
-        className={`${inter.variable} antialiased`}
-      >
-        <body className="min-h-screen w-full relative">
-          <main className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            {children}
-          </main>
-        </body>
-      </html>
+      <>
+        <html
+          lang="en"
+          suppressHydrationWarning
+          className={`${inter.variable} antialiased`}
+        >
+          <head />
+          <body>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Navbar />
+              <main className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+                {children}
+              </main>
+            </ThemeProvider>
+          </body>
+        </html>
+      </>
     </ViewTransitions>
   );
 }

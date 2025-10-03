@@ -10,9 +10,11 @@ export default {
   ],
   theme: {
   	extend: {
-      fontFamily: {
-        sans: ["var(--font-inter)"],
-      },
+  		fontFamily: {
+  			sans: [
+  				'var(--font-inter)'
+  			]
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -62,5 +64,5 @@ export default {
   		}
   	}
   },
-  plugins: [animate],
+  plugins: [animate, require("tailwindcss-animate")],
 } satisfies Config;
