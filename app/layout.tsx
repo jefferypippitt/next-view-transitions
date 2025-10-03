@@ -20,13 +20,17 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} antialiased`}>
-      <body>
-        <main className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          {children}
-        </main>
-      </body>
-    </html>
+      <html
+        lang="en"
+        suppressHydrationWarning
+        className={`${inter.variable} antialiased`}
+      >
+        <body className="min-h-screen w-full relative">
+          <main className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            {children}
+          </main>
+        </body>
+      </html>
     </ViewTransitions>
   );
 }
